@@ -1,8 +1,4 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.StringJoiner;
+import java.util.*;
 
 public class WordFrequencyGame {
 
@@ -13,19 +9,7 @@ public class WordFrequencyGame {
     public String getResult(String sentence) {
 
             try {
-                String[] words = sentence.split(SPACE_PATTERN);
-                List<WordInfos> wordInfos = new ArrayList<>();
-                for (String word : words) {
-                    WordInfos input = new WordInfos(word, 1);
-                    wordInfos.add(input);
-                }
-                Map<String, List<WordInfos>> wordMap = getListMap(wordInfos);
-                List<WordInfos> tempWordInfos = new ArrayList<>();
-                for (Map.Entry<String, List<WordInfos>> entry : wordMap.entrySet()) {
-                    WordInfos input = new WordInfos(entry.getKey(), entry.getValue().size());
-                    tempWordInfos.add(input);
-                }
-                wordInfos = tempWordInfos;
+                List<WordInfos> wordInfos = calculateWordFrequency(sentence);
 
                 wordInfos.sort((firstWordInfo, secondWordInfo) -> secondWordInfo.getWordCount() - firstWordInfo.getWordCount());
 
@@ -38,6 +22,16 @@ public class WordFrequencyGame {
             } catch (Exception e) {
                 return "Calculate Error";
             }
+    }
+
+    private List<WordInfos> calculateWordFrequency(String sentence) {
+        List<WordInfos> wordInfos=new ArrayList<>();
+        List<String> words= Arrays.asList(sentence.split(SPACE_PATTERN));
+        for(String uniqueWord : new HashSet<>(words)){
+            int count= (int) words.stream().filter(word -> word.equals(uniqueWord)).count();
+            wordInfos.add(new WordInfos(uniqueWord,count));
+        }
+        return wordInfos;
     }
 
     private Map<String, List<WordInfos>> getListMap(List<WordInfos> inputList) {
