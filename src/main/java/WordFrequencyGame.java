@@ -11,9 +11,7 @@ public class WordFrequencyGame {
     private static final String NEW_LINE_DELIMITER = "\n";
 
     public String getResult(String sentence) {
-        if (sentence.split(SPACE_PATTERN).length == 1) {
-            return sentence + " 1";
-        } else {
+
             try {
                 String[] words = sentence.split(SPACE_PATTERN);
                 List<WordInfos> wordInfos = new ArrayList<>();
@@ -40,7 +38,6 @@ public class WordFrequencyGame {
             } catch (Exception e) {
                 return "Calculate Error";
             }
-        }
     }
 
     private Map<String, List<WordInfos>> getListMap(List<WordInfos> inputList) {
