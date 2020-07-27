@@ -22,12 +22,12 @@ public class WordFrequencyGame {
                     wordInfos.add(input);
                 }
                 Map<String, List<WordInfos>> wordMap = getListMap(wordInfos);
-                List<WordInfos> list = new ArrayList<>();
+                List<WordInfos> tempWordInfos = new ArrayList<>();
                 for (Map.Entry<String, List<WordInfos>> entry : wordMap.entrySet()) {
                     WordInfos input = new WordInfos(entry.getKey(), entry.getValue().size());
-                    list.add(input);
+                    tempWordInfos.add(input);
                 }
-                wordInfos = list;
+                wordInfos = tempWordInfos;
 
                 wordInfos.sort((firstWordInfo, secondWordInfo) -> secondWordInfo.getWordCount() - firstWordInfo.getWordCount());
 
