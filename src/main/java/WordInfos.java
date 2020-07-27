@@ -1,8 +1,8 @@
-public class Input {
+public class WordInfos {
     private String value;
     private int count;
 
-    public Input(String w, int i) {
+    public WordInfos(String w, int i) {
         this.value = w;
         this.count = i;
     }
