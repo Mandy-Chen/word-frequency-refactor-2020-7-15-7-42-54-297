@@ -6,9 +6,9 @@ import java.util.StringJoiner;
 
 public class WordFrequencyGame {
 
-    public static final String SPACE_PATTERN = "\\s+";
-    public static final String BLANK_SPACE = " ";
-    public static final String NEW_LINE_DELIMITER = "\n";
+    private static final String SPACE_PATTERN = "\\s+";
+    private static final String BLANK_SPACE = " ";
+    private static final String NEW_LINE_DELIMITER = "\n";
 
     public String getResult(String inputStr) {
 
